@@ -24,8 +24,10 @@ def articles():
 
 @app.route('/article/<int:id>')
 def article(id):
-    print(id)
-    return "Success"
+    articles = Articles()
+    article = articles[id-1]
+    print(articles[id-1])
+    return render_template("article.html", article = article)
 
 # 프로젝트 시작점, 먼저 실행함
 if __name__ == '__main__':
