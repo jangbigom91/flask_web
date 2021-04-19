@@ -22,6 +22,11 @@ def articles():
     # print(articles[0]['title'])
     return render_template("articles.html", articles = articles)
 
+@app.route('/article/<int:id>')
+def article(id):
+    print(id)
+    return "Success"
+
 # 프로젝트 시작점, 먼저 실행함
 if __name__ == '__main__':
     app.run()
