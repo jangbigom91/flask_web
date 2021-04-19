@@ -3,5 +3,30 @@
 <h1 class="display-4">ARTICLES PAGE</h1>
 <p class="lead">This Application is build using by python and Flask Framework</p>
 <hr class="my-4">
+
+<table class="table" style="width:100%">
+    <thead class="thead-dark">
+        <tr>
+        <th scope="col">ID</th>
+        <th scope="col">TITLE</th>
+        <th scope="col">DESCRIPTION</th>
+        <th scope="col">AUTHOR</th>
+        <th scope="col">DATE</th>
+        <th scope="col">EDIT</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr>
+          <th scope="col">{{article['id']}}</th>
+          <td>{{article['title']}}</td>
+          <td>{{article['body']}}</td>
+          <td>{{article['author']}}</td>
+          <td>{{article['create_date']}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
 <a class="btn btn-warning btn-lg" href="#" role="button">Learn more</a>
 {% endblock %}
