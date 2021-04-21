@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from data import Articles
 import pymysql
+import bcrypt
 
 app = Flask(__name__)
 
@@ -114,6 +115,7 @@ def register():
         email     = request.form['email']
         username  = request.form['username']
         password  = request.form['password']
+        password = (bcrypt.hashpw(password.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8') # 비밀번호 암호화
 
         sql = "INSERT INTO `users` (`name`, `email`, `username`, `password`) VALUES (%s, %s, %s, %s);" # input활용
         input_data = [name, email, username, password]
