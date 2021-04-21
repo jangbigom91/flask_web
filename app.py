@@ -152,6 +152,12 @@ def login():
     else :
         return render_template("login.html")
 
+@app.route('/learnmore', methods = ["GET", "POST"])
+def learnmore():
+    return render_template("/learnmore.html")
+
+
+
 # 프로젝트 시작점, 먼저 실행함
 if __name__ == '__main__':
     app.run()
