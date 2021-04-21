@@ -106,12 +106,25 @@ def edit(id):
         # print(topic[1])
         return render_template("edit_article.html", article = topic)
 
-@app.route('/login')
-def login():
-    return render_template("/login.html")
+@app.route('/register', methods = ["GET", "POST"])
+def register():
+    cursor = db.cursor()
+    if request.method == "POST":
+        name      = request.form['name']
+        email     = request.form['email']
+        username  = request.form['username']
+        password  = request.form['password']
 
-
-
+        sql = "INSERT INTO `users` (`name`, `email`, `username`, `password`) VALUES (%s, %s, %s, %s);" # input활용
+        input_data = [name, email, username, password]
+        
+        cursor.execute(sql, input_data)
+        db.commit()
+        
+        # db.close()
+        return redirect("/")
+    else:
+        return render_template("register.html")
 
 # 프로젝트 시작점, 먼저 실행함
 if __name__ == '__main__':
