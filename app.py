@@ -129,6 +129,25 @@ def register():
     else:
         return render_template("register.html")
 
+@app.route('/login', methods = ["GET", "POST"])
+def login():
+    cursor = db.cursor()
+    if request.method == "POST":
+        usersname = request.form['username']
+        userpw_1 = request.form['userpw']
+        # print(userpw_1)
+        # print(request.form['username'])
+        sql = 'SELECT password FROM `users` WHERE email = %s;'
+        input_data = [usersname]
+        cursor.execute(sql, input_data)
+        userpw = cursor.fetchone()
+        print(userpw[0])
+        if sha256_crypt.verify(userpw_1, userpw[0]):
+            return "SUCCESS"
+        else :
+            return userpw[0]
+
+
 # 프로젝트 시작점, 먼저 실행함
 if __name__ == '__main__':
     app.run()
