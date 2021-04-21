@@ -92,6 +92,7 @@ def edit(id):
     if request.method == "POST":
         title = request.form['title']
         desc = request.form['desc']
+        # author = request.form['author'] # disabled
         sql = "UPDATE `topic` SET title = %s, body = %s WHERE id = {}".format(id)
         input_data = [title, desc]
         cursor.execute(sql, input_data)
