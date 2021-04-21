@@ -1,0 +1,20 @@
+{% extends "layouts.html"%}
+<!-- 진자 엔진의 import방법 = extends -->
+{% block body %}
+<form action="/login" method="post">
+    ​<div class="form-group">
+        <label>EMAIL</label>
+        <input type="email" name="email" class="form-control" placeholder="ID">
+    </div>
+    <div class="form-group">
+        <label>PW</label>
+        <input type="password" name="userpw" class="form-control" placeholder="Password">
+    </div>
+    <input class="btn btn-dark btn-dark" type="submit" value="LOGIN">
+</form>
+<h1 class="display-4">MAIN HOME PAGE</h1>
+<p class="lead">This Application is build using by python and Flask Framework</p>
+<!--<a class="btn btn-dark btn-dark" href="/assignment" role="button">Assignment</a> -->
+<hr class="my-4">
+<a class="btn btn-warning btn-dark" href="/register" role="button">SIGN UP</a>
+{% endblock %}

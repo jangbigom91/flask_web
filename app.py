@@ -133,20 +133,24 @@ def register():
 def login():
     cursor = db.cursor()
     if request.method == "POST":
-        usersname = request.form['username']
+        email = request.form['email']
         userpw_1 = request.form['userpw']
         # print(userpw_1)
         # print(request.form['username'])
-        sql = 'SELECT password FROM `users` WHERE email = %s;'
-        input_data = [usersname]
+        sql = 'SELECT * FROM `users` WHERE email = %s;'
+        input_data = [email]
         cursor.execute(sql, input_data)
-        userpw = cursor.fetchone()
-        print(userpw[0])
-        if sha256_crypt.verify(userpw_1, userpw[0]):
-            return "SUCCESS"
-        else :
-            return userpw[0]
-
+        user = cursor.fetchone()
+        if user == None:
+            print(user)
+            return redirect('/register')
+        else:
+            if sha256_crypt.verify(userpw_1, user[4]):
+                return redirect('/articles')
+            else :
+                return user[4]
+    else :
+        return render_template("login.html")
 
 # 프로젝트 시작점, 먼저 실행함
 if __name__ == '__main__':
