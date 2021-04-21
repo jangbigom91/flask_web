@@ -92,9 +92,9 @@ def edit(id):
     if request.method == "POST":
         title = request.form['title']
         desc = request.form['desc']
-        # author = request.form['author'] # disabled
-        sql = "UPDATE `topic` SET title = %s, body = %s WHERE id = {}".format(id)
-        input_data = [title, desc]
+        author = request.form['author']
+        sql = "UPDATE `topic` SET title = %s, body = %s, author = %s WHERE id = {}".format(id)
+        input_data = [title, desc, author]
         cursor.execute(sql, input_data)
         db.commit()
         return redirect("/articles")
@@ -105,6 +105,13 @@ def edit(id):
         topic = cursor.fetchone()
         # print(topic[1])
         return render_template("edit_article.html", article = topic)
+
+@app.route('/login')
+def login():
+    return render_template("/login.html")
+
+
+
 
 # 프로젝트 시작점, 먼저 실행함
 if __name__ == '__main__':

@@ -1,0 +1,15 @@
+{% extends "layouts.html" %}
+{% block body %}
+<form action="#">
+    <table style="display: inline-block; text-align: center; margin-left: 600px; margin-top: 200px;">
+        <tr>
+            <td><input type="text" name="name" placeholder="아이디 입력"></td>
+        </tr>
+        <tr>
+            <td><input type="password" name="password" placeholder="비밀번호 입력"></td>
+        </tr>
+    </table>
+    <input type="submit" value="로그인">
+</form>
+<a class="btn btn-warning btn-lg" href="/" role="button" style="margin-left: 600px;">돌아가기</a>
+{% endblock %}
