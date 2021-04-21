@@ -3,7 +3,7 @@
 <h1 class="display-4">EDIT PAGE</h1>
 <p class="lead">This Application is build using by python and Flask Framework</p>
 <hr class="my-4">
-<form action="/edit" method="POST" onsubmit="return confirm('이대로 수정하시겠습니까?')">
+<form action="/{{article[0]}}/edit" method="POST" onsubmit="return confirm('이대로 수정하시겠습니까?')">
     <input type="text" name="title"  value ="{{article[1]}}" required>  
     <input type="text" name="desc"   value ="{{article[2]}}" required>  
     <input type="text" name="author" value ="{{article[3]}}" disabled>  
